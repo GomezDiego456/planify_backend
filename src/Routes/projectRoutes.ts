@@ -6,7 +6,7 @@ import { handleInputErrors } from '../middleware/validation'
 const router = Router()
 
 router.post('/', 
-    //hacemos las validaciones
+    //hacemos las validaciones con express-validator
     body('projectName')
         .notEmpty().withMessage('El nombre del proyecto es obligatorio'),
     body('clientName')

@@ -1,16 +1,21 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import { connectDB } from './config/db'
-import projectRoutes from './Routes/projectRoutes'
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import { corsConfig } from "./config/cors";
+import { connectDB } from "./config/db";
+import authRoutes from "./Routes/authRoutes";
+import projectRoutes from "./Routes/projectRoutes";
 
-dotenv.config()
-connectDB()
+dotenv.config();
+connectDB();
 
-const app = express()
+const app = express();
+app.use(cors(corsConfig)); //CORS Middleware
 
-app.use(express.json())
+app.use(express.json());
 
 //Routes
-app.use('/api/projects', projectRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
 
-export default app
+export default app;

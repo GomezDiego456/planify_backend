@@ -6,8 +6,8 @@ export class ProjectController {
     static createProject = async (req: Request, res: Response) => {
         
         const project = new Project(req.body)
-        try {
-            await project.save()//para almacenar en la base de datos
+        try {             //para almacenar en la base de datos
+            await project.save()
             res.send('profesor creado correctamente')
 
         } catch (error) {
