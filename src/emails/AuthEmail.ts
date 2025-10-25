@@ -15,9 +15,25 @@ export class AuthEmail {
       text: "Planify - Confirma tu cuenta",
       html: `<p>Hola: ${user.name}, has creado tu cuenta en Planify, ya casi esta todo listo, solo debes confirmar tu cuenta</p>
                 <p>visita el siguiente enlace:</p>
-                <a href="">confirmar cuenta</a>
+                <a href="${process.env.FRONTEND_URL}/auth/confirm-account">confirmar cuenta</a>
                 <p>E ingresa el codigo: <b>${user.token}</b></p>
-                <p>este token es valido por solo 1 hora</p>
+                <p>este token es valido por solo 10 minutos</p>
+        `,
+    });
+    console.log("Mensaje enviado", info.messageId);
+  };
+
+  static sendPasswordResetToken = async (user: IEmail) => {
+    const info = await transporter.sendMail({
+      from: "Planify <admin@planify.com>",
+      to: user.email, //el email del usuario
+      subject: "Restablece tu contraseña",
+      text: "Planify - Restablece tu contraseña",
+      html: `<p>Hola: ${user.name}, has solicitado restablecer tu contraseña en Planify</p>
+                <p>visita el siguiente enlace:</p>
+                <a href="${process.env.FRONTEND_URL}/auth/new-password">restablecer contraseña</a>
+                <p>E ingresa el codigo: <b>${user.token}</b></p>
+                <p>este token es valido por solo 10 minutos</p>
         `,
     });
     console.log("Mensaje enviado", info.messageId);

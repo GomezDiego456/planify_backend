@@ -16,10 +16,10 @@ const TokenSchema: Schema = new Schema({
     type: Types.ObjectId,
     ref: "User",
   },
-  createdAt: {
+  expiresAt: {
     type: Date,
     default: Date.now(),
-    expires: 3600, //el token expira en una hora
+    expires: 600, //el token expira en 10 minutos
   },
 });
 
