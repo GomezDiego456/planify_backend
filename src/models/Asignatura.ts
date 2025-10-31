@@ -5,7 +5,7 @@ export interface IAsignatura extends Document {
   nombre: string;
   codigo: string;
   departamento?: string;
-  profesor?: Types.ObjectId | IProfesor; // Referencia al profesor asignado
+  profesor?: Types.ObjectId;
   creditos?: number;
   duracionHoras?: number; // duración por sesión
 }

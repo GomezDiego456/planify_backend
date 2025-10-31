@@ -20,7 +20,7 @@ export class AsignaturaController {
     try {
       const asignaturas = await Asignatura.find({}).populate(
         "profesor",
-        "nombreCompleto correo"
+        "nombreCompleto"
       );
       res.json(asignaturas);
     } catch (error) {

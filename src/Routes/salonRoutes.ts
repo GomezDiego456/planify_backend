@@ -9,7 +9,7 @@ const router = Router();
 // Crear un nuevo salón
 router.post(
   "/",
-  authenticate,
+  // authenticate,
   body("nombre").notEmpty().withMessage("El nombre del salón es obligatorio"),
   body("tipo").notEmpty().withMessage("El tipo de salón es obligatorio"),
   body("capacidad")

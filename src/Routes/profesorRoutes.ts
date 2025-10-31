@@ -2,14 +2,14 @@ import { Router } from "express";
 import { ProfesorController } from "../controllers/ProfesorController";
 import { body, param } from "express-validator";
 import { handleInputErrors } from "../middleware/validation";
-import { authenticate } from "../middleware/auth";
+// import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
 // Crear profesor
 router.post(
   "/",
-  authenticate,
+  // authenticate,
   body("nombreCompleto")
     .notEmpty()
     .withMessage("El nombre del profesor es obligatorio"),
@@ -21,12 +21,12 @@ router.post(
 );
 
 // Obtener todos los profesores
-router.get("/", authenticate, ProfesorController.obtenerProfesores);
+router.get("/", /*authenticate,*/ ProfesorController.obtenerProfesores);
 
 // Obtener profesor por ID
 router.get(
   "/:id",
-  authenticate,
+  /*authenticate,*/
   param("id").isMongoId().withMessage("ID de profesor inválido"),
   handleInputErrors,
   ProfesorController.obtenerProfesorPorId
@@ -35,7 +35,7 @@ router.get(
 // Actualizar profesor
 router.put(
   "/:id",
-  authenticate,
+  /*authenticate,*/
   param("id").isMongoId().withMessage("ID de profesor inválido"),
   body("nombreCompleto")
     .notEmpty()
@@ -50,7 +50,7 @@ router.put(
 // Eliminar profesor
 router.delete(
   "/:id",
-  authenticate,
+  /*authenticate,*/
   param("id").isMongoId().withMessage("ID de profesor inválido"),
   handleInputErrors,
   ProfesorController.eliminarProfesor

@@ -2,14 +2,14 @@ import { Router } from "express";
 import { AsignaturaController } from "../controllers/AsignaturaController";
 import { body, param } from "express-validator";
 import { handleInputErrors } from "../middleware/validation";
-import { authenticate } from "../middleware/auth";
+// import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
 // Crear asignatura
 router.post(
   "/",
-  authenticate,
+  // authenticate,
   body("nombre")
     .notEmpty()
     .withMessage("El nombre de la asignatura es obligatorio"),
@@ -21,12 +21,12 @@ router.post(
 );
 
 // Obtener todas las asignaturas
-router.get("/", authenticate, AsignaturaController.obtenerAsignaturas);
+router.get("/", /*authenticate,*/ AsignaturaController.obtenerAsignaturas);
 
 // Obtener asignatura por ID
 router.get(
   "/:id",
-  authenticate,
+  // authenticate,
   param("id").isMongoId().withMessage("ID de asignatura inválido"),
   handleInputErrors,
   AsignaturaController.obtenerAsignaturaPorId
@@ -35,7 +35,7 @@ router.get(
 // Actualizar asignatura
 router.put(
   "/:id",
-  authenticate,
+  // authenticate,
   param("id").isMongoId().withMessage("ID de asignatura inválido"),
   body("nombre")
     .notEmpty()
@@ -50,7 +50,7 @@ router.put(
 // Eliminar asignatura
 router.delete(
   "/:id",
-  authenticate,
+  // authenticate,
   param("id").isMongoId().withMessage("ID de asignatura inválido"),
   handleInputErrors,
   AsignaturaController.eliminarAsignatura

@@ -5,7 +5,7 @@ export interface ISalon extends Document {
   tipo: string; // Tipo de salón (Aula, Laboratorio, Auditorio, etc.)
   capacidad: number; // Capacidad máxima de estudiantes
   ubicacion: string; // Lugar físico donde se encuentra
-  recursos: string[]; // Recursos disponibles (proyector, tablero, etc.)
+  recursos: string;
 }
 
 const SalonSchema: Schema = new Schema({
@@ -30,8 +30,8 @@ const SalonSchema: Schema = new Schema({
     trim: true,
   },
   recursos: {
-    type: [String],
-    default: [],
+    type: String,
+    required: true,
   },
 });
 
