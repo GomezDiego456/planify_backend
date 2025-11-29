@@ -6,9 +6,10 @@ import { connectDB } from "./config/db";
 import authRoutes from "./Routes/authRoutes";
 import projectRoutes from "./Routes/projectRoutes";
 import profesorRoutes from "./Routes/profesorRoutes";
-import morgan from "morgan";
+// import morgan from "morgan";
 import asignaturaRoutes from "./Routes/asignaturaRoutes";
 import salonRoutes from "./Routes/salonRoutes";
+import horarioRoutes from "./Routes/horarioRoutes";
 
 dotenv.config();
 connectDB();
@@ -28,5 +29,6 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/profesores", profesorRoutes);
 app.use("/api/asignaturas", asignaturaRoutes);
 app.use("/api/salones", salonRoutes);
+app.use("/api/horarios", horarioRoutes);
 
 export default app;
