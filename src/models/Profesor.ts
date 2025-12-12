@@ -4,7 +4,7 @@ export interface IProfesor extends Document {
   nombreCompleto: string;
   correo: string;
   departamento?: string;
-  disponible?: boolean; // Indica si ya tiene disponibilidad configurada
+  disponible?: boolean;
 }
 
 const ProfesorSchema: Schema = new Schema({

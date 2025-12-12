@@ -10,6 +10,7 @@ import profesorRoutes from "./Routes/profesorRoutes";
 import asignaturaRoutes from "./Routes/asignaturaRoutes";
 import salonRoutes from "./Routes/salonRoutes";
 import horarioRoutes from "./Routes/horarioRoutes";
+import disponibilidadRoutes from "./Routes/disponibilidadRoutes";
 
 dotenv.config();
 connectDB();
@@ -30,5 +31,6 @@ app.use("/api/profesores", profesorRoutes);
 app.use("/api/asignaturas", asignaturaRoutes);
 app.use("/api/salones", salonRoutes);
 app.use("/api/horarios", horarioRoutes);
+app.use("/api/disponibilidad", disponibilidadRoutes);
 
 export default app;
