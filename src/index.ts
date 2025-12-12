@@ -1,7 +1,10 @@
-import server from './server'
+import dotenv from "dotenv";
+dotenv.config();
 
-const port = process.env.PORT || 4000
+import server from "./server";
+
+const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
-  console.log(`rest api funcionando en el puerto ${port}`)
-})
+  console.log(`🚀 API Planity corriendo en el puerto ${port}`);
+});
